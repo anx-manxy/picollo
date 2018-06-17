@@ -1,0 +1,26 @@
+<Configuration status="info" monitorInterval="60" name="FacingIssuesOnIT">
+<!-- Log File Name and Location -->
+    <Properties>
+        <Property name="filename">target/picollo.log</Property>
+        <!-- <Property name="log-path">/Volumes/El Capitan/Development/cdp/picollo/logs/</Property>-->
+    </Properties>
+    <Appenders>
+        <!-- Console Logging -->
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyyMMdd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <!-- File Logging -->
+        <File name="file" fileName="${filename}">
+            <PatternLayout>
+                <pattern>%d %p %c [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <!-- ByDefault, all log messages of level "trace" or higher will be logged.Log messages are sent to the "file" appender are severity level error or higher while  for console appender and log messages of level "error" and higher will be sent to the "STDOUT" appender. -->
+        <Root level="trace">
+            <AppenderRef ref="file" level="info" />
+            <AppenderRef ref="STDOUT" level="debug" />
+        </Root>
+    </Loggers>
+</Configuration>
